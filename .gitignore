@@ -1,0 +1,36 @@
+# LaTeX 编译产物
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.synctex
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.run.xml
+*.bcf
+*-blx.bib
+
+# 中间文件
+_minted*/
+*.pyg
+
+# 系统文件
+
+# Claude Code 本地配置
+.claude/
+
+# 系统文件
+Thumbs.db
+.DS_Store
