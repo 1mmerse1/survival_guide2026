@@ -1,4 +1,8 @@
-# LaTeX 编译产物
+# LaTeX 构建目录
+/build/
+/output/
+
+# LaTeX 辅助文件（防止手动编译时散落在项目中）
 *.aux
 *.log
 *.out
@@ -22,15 +26,18 @@
 *.bcf
 *-blx.bib
 
-# 中间文件
+# 本地检查与临时输出
+verification.*
+tmp_pdf_page_*.png
+tmp/
+
+# minted / Pygments
 _minted*/
 *.pyg
 
-# 系统文件
-
-# Claude Code 本地配置
+# 本地工具配置
 .claude/
 
-# 系统文件
+# 操作系统文件
 Thumbs.db
 .DS_Store
