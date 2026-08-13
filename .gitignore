@@ -34,3 +34,6 @@ _minted*/
 # 系统文件
 Thumbs.db
 .DS_Store
+
+# 静态网站构建产物（由 scripts/build_website.py 生成）
+website/dist/

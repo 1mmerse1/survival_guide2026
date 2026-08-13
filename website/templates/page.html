@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <title>{{TITLE}}｜北京大学工学院新生生存手册</title>
+  <link rel="stylesheet" href="main.css">
+  <script defer src="search-index.js"></script>
+  <script defer src="main.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+</head>
+<body class="{{BODY_CLASS}}" data-page="content">
+  <a class="skip-link" href="#article">跳到正文</a>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">COE</span><span>新生生存手册</span></a>
+    <nav class="site-navigation" aria-label="网站栏目">{{NAVIGATION}}</nav>
+    <div class="topbar-actions">
+      <button class="search-trigger" type="button" aria-label="打开全文搜索"><span aria-hidden="true">⌕</span><span class="search-label">搜索</span><kbd>Ctrl K</kbd></button>
+      <a class="pdf-link" href="survival_guide.pdf" download>下载 PDF</a>
+      <button class="icon-button menu-toggle" type="button" aria-label="打开网站菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="article-hero">
+    <nav class="breadcrumb" aria-label="当前位置"><a href="index.html">首页</a><span>/</span><a href="{{CATEGORY_URL}}">{{CATEGORY_TITLE}}</a><span>/</span><span>{{TITLE}}</span></nav>
+    <p class="eyebrow">{{CATEGORY_TITLE}}</p>
+    <h1>{{TITLE}}</h1>
+    <p>{{PAGE_DESCRIPTION}}</p>
+  </div>
+
+  <div class="content-shell">
+    <main class="reading-layout">
+      <article class="article" id="article">{{ARTICLE}}</article>
+      {{RELATED}}
+    </main>
+    <aside class="on-this-page" aria-label="本页目录">
+      <div class="toc-inner"><p class="sidebar-label">本页内容</p>{{TOC}}</div>
+    </aside>
+  </div>
+
+  <footer class="site-footer"><p>北京大学工学院学生会</p><p><a href="about-handbook.html">关于这本手册</a></p></footer>
+  <button class="back-to-top" type="button" aria-label="返回顶部">↑</button>
+  <div class="nav-backdrop" hidden></div>
+
+  <dialog class="search-dialog" aria-labelledby="search-title">
+    <div class="search-header"><h2 id="search-title">搜索手册</h2><button class="dialog-close" type="button" aria-label="关闭搜索">×</button></div>
+    <label class="search-field"><span aria-hidden="true">⌕</span><input type="search" placeholder="输入专业、课程或生活问题……" autocomplete="off"></label>
+    <p class="search-hint">可以搜索具体专业、访谈、课程和校园信息。</p>
+    <div class="search-results" aria-live="polite"></div>
+  </dialog>
+  <dialog class="image-dialog"><button class="dialog-close image-close" type="button" aria-label="关闭图片">×</button><img alt=""></dialog>
+</body>
+</html>
