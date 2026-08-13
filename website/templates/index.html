@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="北京大学工学院新生生存手册在线阅读版">
+  <title>北京大学工学院新生生存手册</title>
+  <link rel="stylesheet" href="main.css">
+  <script defer src="search-index.js"></script>
+  <script defer src="main.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar home-topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">COE</span><span>新生生存手册</span></a>
+    <nav class="site-navigation" aria-label="网站栏目">{{NAVIGATION}}</nav>
+    <div class="topbar-actions">
+      <button class="search-trigger" type="button" aria-label="打开全文搜索"><span aria-hidden="true">⌕</span><span class="search-label">搜索</span><kbd>Ctrl K</kbd></button>
+      <a class="pdf-link" href="survival_guide.pdf" download>下载 PDF</a>
+      <button class="icon-button menu-toggle" type="button" aria-label="打开网站菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">北京大学工学院</p>
+        <h1>新生生存手册</h1>
+        <p class="hero-intro">从专业选择、课程学习到校园生活，按你现在关心的问题查找信息。</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="majors.html">查看专业介绍</a>
+          <a class="secondary-button" href="survival_guide.pdf" download>下载 PDF 版本</a>
+        </div>
+      </div>
+      <div class="quick-panel">
+        <p>常用入口</p>
+        <a href="majors.html"><span>我想了解各个专业</span><strong>专业介绍 →</strong></a>
+        <a href="course-system.html"><span>我准备开始选课</span><strong>选课操作 →</strong></a>
+        <a href="major-transfer.html"><span>我在考虑转专业</span><strong>转入与转出 →</strong></a>
+        <a href="freshman-timeline.html"><span>我想了解大一全年节奏</span><strong>大一时间线 →</strong></a>
+        <a href="digital-tools.html"><span>我想学习计算机与 AI 工具</span><strong>数字工具 →</strong></a>
+        <a href="information-resources.html"><span>我想查校园信息</span><strong>信息与工具 →</strong></a>
+      </div>
+    </section>
+
+    <section class="chapters-section" aria-labelledby="chapters-title">
+      <div class="section-heading">
+        <p class="eyebrow">CONTENTS</p>
+        <h2 id="chapters-title">你想了解什么？</h2>
+      </div>
+      <div class="portal-grid">{{CATEGORY_CARDS}}</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>北京大学工学院学生会</p>
+    <p>网页内容与 LaTeX 原稿同步生成</p>
+  </footer>
+  <div class="nav-backdrop" hidden></div>
+
+  <dialog class="search-dialog" aria-labelledby="search-title">
+    <div class="search-header">
+      <h2 id="search-title">搜索手册</h2>
+      <button class="dialog-close" type="button" aria-label="关闭搜索">×</button>
+    </div>
+    <label class="search-field"><span aria-hidden="true">⌕</span><input type="search" placeholder="输入专业、课程或生活问题……" autocomplete="off"></label>
+    <p class="search-hint">可以搜索具体专业、访谈、课程和校园信息。</p>
+    <div class="search-results" aria-live="polite"></div>
+  </dialog>
+</body>
+</html>
