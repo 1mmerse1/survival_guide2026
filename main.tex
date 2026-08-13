@@ -1,0 +1,64 @@
+\documentclass[11pt,oneside]{book}
+\usepackage{ctex}
+%%%%%%%%%%%%% Geometry
+
+\usepackage{perpage} % 引入 perpage 宏包
+\MakePerPage{footnote} % 设置 footnote 计数器每页重置
+
+\usepackage[a4paper,left=2.5cm,right=2.5cm, bottom=2.5cm,top=2.5cm]{geometry}
+%%%%%%%%%%%%%%% Les paquets
+\usepackage[english]{babel}
+\makeatletter
+\def\input@path{{styles/}}
+\makeatother
+\usepackage[palette=munch]{nexus}
+%%%%%%%%%%%%%%%% hyperref
+\usepackage[verbose]{hyperref}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{float}
+\usetikzlibrary{positioning}
+
+% 将封面或封底图片铺满整页。
+\newcommand{\fullbleedpage}[1]{%
+	\clearpage
+	\thispagestyle{empty}%
+	\AddToShipoutPictureBG*{%
+		\AtPageLowerLeft{\includegraphics[width=\paperwidth,height=\paperheight]{#1}}%
+	}%
+	\null
+	\clearpage
+}
+
+\hypersetup{ 
+	hidelinks
+}
+\setlength{\XeTeXLinkMargin}{-1pt}
+%\setlength{\lineskip}{2.625bp}
+
+%首行缩进
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+%目录仅显示第0级和第1级
+\setcounter{tocdepth}{1}
+
+% 正文从这里开始
+\begin{document}
+	
+
+\input{content/frontmatter}
+
+\mainmatter
+\input{content/chapter-01-basic-information}
+\input{content/chapter-02-course-selection}
+\input{content/chapter-03-study-life}
+\input{content/chapter-04-student-organizations}
+\input{content/chapter-05-positive-mindset}
+\input{content/chapter-06-freshman-timeline}
+\input{content/chapter-07-daily-life}
+
+\input{content/backmatter}
+
+\end{document}
