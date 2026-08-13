@@ -1,0 +1,46 @@
+{
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex×2",
+            "tools": [
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        }
+    ],
+    "latex-workshop.latex.recipe.default": "xelatex×2",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.message.error.show": true,
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ilg",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.log",
+        "*.synctex.gz",
+        "*.thm",
+        "*.fdb_latexmk",
+        "*.fls",
+        "*.xdv"
+    ]
+}
