@@ -94,7 +94,7 @@ PAGES = [
     PageSpec("chapter-07-daily-life.tex", "engineering-campus", "工院人根据地", "工学大院空间与日常活动地点", "wellbeing-life", r"\section{工院人根据地}", r"\section{信息渠道}"),
     PageSpec("chapter-07-daily-life.tex", "information-resources", "信息渠道与常用工具", "网站、公众号、软件和校内电话", "wellbeing-life", r"\section{信息渠道}"),
 
-    PageSpec("frontmatter.tex", "about-handbook", "关于这本手册", "编写缘起、各版前言与使用声明", "about", r"\chapter*{第二版前言}", None, "frontmatter"),
+    PageSpec("frontmatter.tex", "about-handbook", "关于这本手册", "编写缘起、各版前言与使用声明", "about", r"\fullbleedpage{assets/cover-third-edition.png}", None, "frontmatter"),
     PageSpec("backmatter.tex", "afterword", "后记与结语", "致谢、反馈方式与写给读者的话", "about", r"\chapter*{后记}", None, "backmatter"),
 ]
 
@@ -179,7 +179,7 @@ def plain_text(fragment: str) -> str:
 class LatexPageConverter:
     STRUCTURAL_COMMANDS = {
         "frontmatter", "backmatter", "mainmatter", "tableofcontents", "newpage",
-        "null", "centering", "noindent", "pagestyle", "renewcommand",
+        "null", "clearpage", "centering", "noindent", "pagestyle", "renewcommand",
     }
     SPACING_COMMANDS = {"vspace", "hspace", "quad", "qquad", "newline", "linebreak"}
 
@@ -199,13 +199,13 @@ class LatexPageConverter:
         if self.spec.kind == "frontmatter":
             # The first 90 lines construct a PDF-only cover. The web edition
             # begins at the actual written content.
-            marker = r"\chapter*{第二版前言}"
+            marker = r"\chapter*{第三版前言}"
             position = source.find(marker)
             if position < 0:
-                raise ValueError("无法在 frontmatter.tex 中找到“第二版前言”")
+                raise ValueError("无法在 frontmatter.tex 中找到“第三版前言”")
             source = source[position:]
         source = re.sub(r"\\tableofcontents\b", "", source)
-        source = re.sub(r"\\(?:frontmatter|backmatter|mainmatter|newpage|null)\b", "", source)
+        source = re.sub(r"\\(?:frontmatter|backmatter|mainmatter|newpage|null|clearpage)\b", "", source)
         source = re.sub(r"\\fullbleedpage\{[^{}]+\}", "", source)
         return self.convert_blocks(source)
 
