@@ -94,6 +94,7 @@ survival_guide/
 │
 ├─ website/
 │  ├─ templates/                    # 首页、栏目页和正文页的 HTML 骨架
+│  ├─ events/                       # 仅网站使用的活动回顾正文，不进入 PDF
 │  ├─ styles/main.css               # 网站的全部基础样式
 │  ├─ scripts/main.js               # 搜索、菜单和图片交互
 │  └─ dist/                         # 自动生成的网站，不手改、不提交
@@ -113,6 +114,7 @@ survival_guide/
 | 修改网站颜色、字体和布局 | `website/styles/main.css` |
 | 修改搜索、菜单或图片交互 | `website/scripts/main.js` |
 | 修改网站栏目和专题切分 | `scripts/build_website.py` 中的页面配置 |
+| 新增网站活动回顾 | `website/events/`，并在 `scripts/build_website.py` 登记页面 |
 | 修改自动发布方式 | `.github/workflows/deploy-pages.yml` |
 
 ## 第一次使用：从 GitHub 克隆到本地
@@ -292,6 +294,22 @@ python scripts/build_website.py --serve
 ```
 
 不要直接修改 `website/dist/`，因为下一次构建会覆盖其中的全部内容。
+
+## 新增往期活动回顾
+
+活动回顾是网站专属内容，不会写入 PDF。每项活动使用一个放在 `website/events/` 下的 `.tex` 文件保存；它仍然使用项目网站构建器支持的简化 LaTeX 写法，因此可以复用标题、列表和超链接等格式。
+
+新增一项活动时：
+
+1. 在 `website/events/` 新建一个具有清晰英文文件名的 `.tex` 文件，例如 `research-sharing.tex`；
+2. 使用 `\section`、`\subsection`、普通段落、`itemize`/`enumerate` 列表和 `\href` 链接组织内容；
+3. 不要在 `main.tex` 中加入这个文件，否则活动内容会进入 PDF；
+4. 在 `scripts/build_website.py` 的 `PAGES` 中增加一个 `PageSpec`，并将 `kind` 设置为 `activity`、`category` 设置为 `events`；
+5. 重新运行网站构建，检查导航、搜索和本地链接；
+6. 如果活动有图片，把图片放进 `assets/`，并在活动正文中使用 `figure` 引用；
+7. 通过 Pull Request 合并到 `master`，GitHub Pages 就会自动更新。
+
+活动页面目前不要求填写日期；如果原始活动文案没有提供日期，不要自行编造。公众号中的图片只有在图片文件实际加入仓库后才能显示，不能只保留“图片”占位文字。
 
 ## 新增章节或调整网站栏目
 
