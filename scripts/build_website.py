@@ -23,6 +23,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content"
 ASSETS_DIR = ROOT / "assets"
 WEBSITE_DIR = ROOT / "website"
+EVENTS_DIR = WEBSITE_DIR / "events"
 DIST_DIR = WEBSITE_DIR / "dist"
 
 
@@ -96,6 +97,11 @@ PAGES = [
 
     PageSpec("frontmatter.tex", "about-handbook", "关于这本手册", "编写缘起、各版前言与使用声明", "about", r"\fullbleedpage{assets/cover-third-edition.png}", None, "frontmatter"),
     PageSpec("backmatter.tex", "afterword", "后记与结语", "致谢、反馈方式与写给读者的话", "about", r"\chapter*{后记}", None, "backmatter"),
+
+    # Website-only content. These files live under website/events/ and are
+    # intentionally not included by main.tex, so activity updates do not
+    # change the handbook PDF.
+    PageSpec("academic-email.tex", "event-academic-email", "工学启研第一期：如何写好学术邮件", "工学启研系列讲座第一期活动回顾，整理学长们关于学术邮件与本科生科研的经验分享", "events", None, None, "activity"),
 ]
 
 
@@ -108,6 +114,7 @@ CATEGORIES = [
     CategorySpec("campus-engagement", "校园参与", "了解学生工作、学生组织、社团和课外活动。", "组织与活动", tuple(page.slug for page in PAGES if page.category == "campus-engagement")),
     CategorySpec("wellbeing-life", "身心与日常生活", "从适应与心理支持，到校园空间、信息渠道和常用工具。", "校园生活", tuple(page.slug for page in PAGES if page.category == "wellbeing-life")),
     CategorySpec("about", "关于手册", "阅读前言、声明、后记与结语。", "项目说明", tuple(page.slug for page in PAGES if page.category == "about")),
+    CategorySpec("events", "往期活动回顾", "浏览工学院学生会往期活动，了解讲座内容、经验分享与延伸资料；活动回顾会持续更新。", "活动记录", tuple(page.slug for page in PAGES if page.category == "events")),
 ]
 
 
@@ -625,6 +632,13 @@ def category_url(category: CategorySpec) -> str:
     return f"{category.articles[0]}.html" if category.direct else f"{category.slug}.html"
 
 
+def source_path_for_spec(spec: PageSpec) -> Path:
+    """Resolve a page source from the handbook or website-only directory."""
+    if spec.kind == "activity":
+        return EVENTS_DIR / spec.source
+    return CONTENT_DIR / spec.source
+
+
 def render_navigation(active_category: str = "") -> str:
     links = ['<a class="nav-home" href="index.html">首页</a>']
     for category in CATEGORIES:
@@ -791,7 +805,7 @@ def build() -> dict[str, object]:
     conversion_mismatches: list[str] = []
 
     for spec in PAGES:
-        source_path = CONTENT_DIR / spec.source
+        source_path = source_path_for_spec(spec)
         source = source_path.read_text(encoding="utf-8")
         source_slice = slice_source(source, spec.start, spec.end)
         expected_counts = {
