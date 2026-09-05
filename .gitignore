@@ -28,8 +28,10 @@ _minted*/
 
 # 系统文件
 
-# Claude Code 本地配置
+# Agent 本地配置
+.codex/
 .claude/
+.workbuddy/
 
 # 系统文件
 Thumbs.db
